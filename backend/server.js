@@ -33,7 +33,10 @@ const server = http.createServer((incomingRequest, serverResponse) => {
     serverResponse.end(JSON.stringify({ data: testTasks }));
     //  get tasks
     // get task
+
+    // handleGetRequest(parsedUrl)
   } else if (incomingRequest.method == "POST") {
+    // handlePostRequest(parsedUrl, data)
     // post task
     let body = "";
     incomingRequest.on("data", (dataChunk) => {
@@ -43,10 +46,13 @@ const server = http.createServer((incomingRequest, serverResponse) => {
     // this happens first, then the 'data' event is emitted
     console.log(`Body: ${body}`);
   } else if (incomingRequest.method == "PUT") {
+    // handlePutRequest(parsedUrl, data)
     // update task
   } else if (incomingRequest.method == "DELETE") {
+    // handleDeleteRequest(parsedUrl)
     // delete task
   } else {
+    // handleInvalidRequest(parsedUrl)
     serverResponse.writeHead(404, "Invalid API request", CONTENT_TYPE_JSON);
     serverResponse.end(JSON.stringify({ errorOMG: "omg its an error" }));
   }
